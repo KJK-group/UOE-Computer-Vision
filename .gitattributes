@@ -1,3 +1,4 @@
 *.pth filter=lfs diff=lfs merge=lfs -text
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
 *ks-m1-mbp.eduroam.net.au.dk.19795* filter=lfs diff=lfs merge=lfs -text
+checkpoint_densenet201_84p_cifar10.pth filter=lfs diff=lfs merge=lfs -text
