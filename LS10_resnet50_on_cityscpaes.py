@@ -23,7 +23,7 @@ def save_model():
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y-%H%M")
     torch.save(checkpoint, f"checkpoint_resnet50_{date_time}_cityscapes.pth")
-    print("Model is saved. Stopping script.")
+    print("Model is saved.")
 
 
 def new_model_optimiser_criterion_epoch():
@@ -46,7 +46,7 @@ def load_saved_model_optimiser_criterion_epoch():
                                  beta1, beta2], eps=1e-08)
 
     loaded_checkpoint = torch.load(
-        "checkpoint_resnet50_0.5epoch_cityscapes.pth")
+        "checkpoint_resnet_cityscapes_v0.0.0.pth")
 
     # for param in model.parameters():    # Freezing the startign layers
     #     # param.requires_grad = False
@@ -73,7 +73,7 @@ batch_size = 2
 learning_rate = 0.0001
 beta1 = 0.9
 beta2 = 0.999
-log_directory = f"runs/Cityscapes/resnet50/v0.1.4 Adam lr = {learning_rate}, epochs = {num_epochs}, batchsize ={batch_size}"
+log_directory = f"runs/Cityscapes/resnet50/v1.0.0 Adam lr = {learning_rate}, epochs = {num_epochs}, batchsize ={batch_size}"
 writer = SummaryWriter(log_directory)
 
 transform = transforms.Compose(
@@ -96,11 +96,8 @@ val_dataset = torchvision.datasets.Cityscapes(root='./cityscapesDataset', split=
 
 # Splitting the training and testing datasets into smaller batches
 #workers = 5
-# ,  num_workers=workers)#, pin_memory=True))
 train_loader = torch.utils.data.DataLoader(
     dataset=train_dataset, batch_size=batch_size, shuffle=True)
-# test_loader  = torch.utils.data.DataLoader(dataset=test_dataset,  batch_size=batch_size, shuffle=False)#, num_workers=workers)#, pin_memory=True))
-# , num_workers=workers)#, pin_memory=True))
 val_loader = torch.utils.data.DataLoader(
     dataset=val_dataset,  batch_size=batch_size, shuffle=False)
 
@@ -108,26 +105,21 @@ val_loader = torch.utils.data.DataLoader(
 model, optimiser, criterion, epoch = new_model_optimiser_criterion_epoch()
 
 '''Training'''
-# Tensorboard
-#writer.add_graph(model.cpu(), val_dataset[0][0])
-# writer.close()
-
 # Doing the training now
-n_total_steps = len(train_loader)
-
-steps_until_print = batch_size
-
-stop_training = False
 
 
 def signal_handler(sig, frame):
     print('\nDetected Ctrl+C, stopping training')
     stop_training = True
     print('Saving model')
+    save_model()
+    print('Safely exiting.')
 
 
 signal.signal(signal.SIGINT, signal_handler)
-
+stop_training = False
+n_total_steps = len(train_loader)
+steps_until_print = batch_size
 model.train()
 print('Starting training')
 for epoch in range(num_epochs):
