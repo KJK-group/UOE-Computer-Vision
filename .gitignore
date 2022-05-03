@@ -1,3 +1,4 @@
 cityscapesDataset/**
 *.pth
 AirSimDataset*/
+AMR_dataset/**
