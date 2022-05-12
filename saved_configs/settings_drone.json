@@ -1,0 +1,104 @@
+{
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "ClockType": "SteppableClock",
+  "Recording": {
+    "RecordOnMove": false,
+    "RecordInterval": 1,
+    "Cameras": [
+      {
+        "CameraName": "rgbd_camera",
+        "ImageType": 0,
+        "PixelsAsFloat": false,
+        "Compress": true
+      },
+      {
+        "CameraName": "rgbd_camera",
+        "ImageType": 5,
+        "PixelsAsFloat": false,
+        "Compress": true
+      },
+      {
+        "CameraName": "rgbd_camera",
+        "ImageType": 1,
+        "PixelsAsFloat": true,
+        "Compress": false,
+        "Read_this": "https://github.com/microsoft/AirSim/issues/1785#issuecomment-463037515"
+      }
+    ]
+  },
+  "Vehicles": {
+    "Drone": {
+      "VehicleType": "SimpleFlight",
+      "Cameras": {
+        "rgbd_camera": {
+          "CaptureSettings": [
+            {
+              "PublishToRos": 1,
+              "ImageType": 0,
+              "Width": 1280,
+              "Height": 720,
+              "FOV_Degrees": 90,
+              "AutoExposureSpeed": 100,
+              "AutoExposureBias": 0,
+              "AutoExposureMaxBrightness": 1,
+              "AutoExposureMinBrightness": 1,
+              "MotionBlurAmount": 0,
+              "TargetGamma": 1.5
+            },
+            {
+              "PublishToRos": 1,
+              "ImageType": 1,
+              "Width": 1280,
+              "Height": 720,
+              "FOV_Degrees": 90,
+              "AutoExposureSpeed": 100,
+              "AutoExposureBias": 0,
+              "AutoExposureMaxBrightness": 1,
+              "AutoExposureMinBrightness": 1,
+              "MotionBlurAmount": 0
+            },
+            {
+              "PublishToRos": 1,
+              "ImageType": 5,
+              "Width": 1280,
+              "Height": 720,
+              "FOV_Degrees": 90,
+              "AutoExposureSpeed": 100,
+              "AutoExposureBias": 0,
+              "AutoExposureMaxBrightness": 1,
+              "AutoExposureMinBrightness": 1,
+              "MotionBlurAmount": 0
+            }
+          ],
+          "X": 0.3,
+          "Y": 0.0,
+          "Z": 0.1,
+          "Pitch": 345.0,
+          "Roll": 0.0,
+          "Yaw": 0.0
+        }
+      }
+    }
+  },
+  "SubWindows": [
+    {
+      "WindowID": 0,
+      "ImageType": 3,
+      "CameraName": "rgbd_camera",
+      "Visible": true
+    },
+    {
+      "WindowID": 1,
+      "ImageType": 5,
+      "CameraName": "rgbd_camera",
+      "Visible": true
+    },
+    {
+      "WindowID": 2,
+      "ImageType": 0,
+      "CameraName": "rgbd_camera",
+      "Visible": true
+    }
+  ]
+}

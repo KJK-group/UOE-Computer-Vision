@@ -1,0 +1,90 @@
+{
+	"SettingsVersion": 1.2,
+	"SimMode": "ComputerVision",
+	"Recording": {
+		"RecordOnMove": false,
+		"RecordInterval": 0.5,
+		"Cameras": [
+			{
+				"CameraName": "0",
+				"ImageType": 0,
+				"PixelsAsFloat": false,
+				"Compress": true
+			},
+			{
+				"CameraName": "0",
+				"ImageType": 5,
+				"PixelsAsFloat": false,
+				"Compress": true
+			},
+			{
+				"CameraName": "0",
+				"ImageType": 1,
+				"PixelsAsFloat": true,
+				"Compress": false,
+				"Read_this": "https://github.com/microsoft/AirSim/issues/1785#issuecomment-463037515"
+			}
+		]
+	},
+	"CameraDefaults": {
+		"CaptureSettings": [
+			{
+				"PublishToRos": 1,
+				"ImageType": 0,
+				"Width": 1280,
+				"Height": 720,
+				"FOV_Degrees": 90,
+				"AutoExposureSpeed": 100,
+				"AutoExposureBias": 0,
+				"AutoExposureMaxBrightness": 1,
+				"AutoExposureMinBrightness": 1,
+				"MotionBlurAmount": 0,
+				"TargetGamma": 1.5
+			},
+			{
+				"PublishToRos": 1,
+				"ImageType": 1,
+				"Width": 1280,
+				"Height": 720,
+				"FOV_Degrees": 90,
+				"AutoExposureSpeed": 100,
+				"AutoExposureBias": 0,
+				"AutoExposureMaxBrightness": 1,
+				"AutoExposureMinBrightness": 1,
+				"MotionBlurAmount": 0
+			},
+			{
+				"PublishToRos": 1,
+				"ImageType": 5,
+				"Width": 1280,
+				"Height": 720,
+				"FOV_Degrees": 90,
+				"AutoExposureSpeed": 100,
+				"AutoExposureBias": 0,
+				"AutoExposureMaxBrightness": 1,
+				"AutoExposureMinBrightness": 1,
+				"MotionBlurAmount": 0
+			}
+		]
+	},
+	"SubWindows": [
+		{
+			"WindowID": 0,
+			"ImageType": 3,
+			"CameraName": "0",
+			"Visible": true
+		},
+		{
+			"WindowID": 1,
+			"ImageType": 5,
+			"CameraName": "0",
+			"Visible": true
+		},
+		{
+			"WindowID": 2,
+			"ImageType": 0,
+			"CameraName": "0",
+			"Visible": true
+		}
+	]
+}
